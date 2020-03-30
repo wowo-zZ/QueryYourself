@@ -13,7 +13,7 @@ public class Index {
     @Autowired
     private ApplyMapper applyMapper;
 
-    @RequestMapping("/")
+    @RequestMapping("/home")
     String home() {
         ApplyDAO applyDAO = applyMapper.selectById(1);
         return "Hello World!";
