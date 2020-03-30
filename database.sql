@@ -8,7 +8,7 @@ create table query(
 	result_type tinyint default 1 comment "结果类型",
 	gmt_create timestamp default current_timestamp comment "创建时间",
 	gmt_update timestamp default current_timestamp comment "修改时间",
-	primary key id `id`
+	primary key id(`id`)
 )engine=innodb default charset=utf8;
 
 create table push(
@@ -17,7 +17,7 @@ create table push(
 	push_type tinyint default 1 comment "推送类型",
 	gmt_create timestamp default current_timestamp comment "创建时间",
 	gmt_update timestamp default current_timestamp comment "修改时间",
-	primary key id `id`
+	primary key id(`id`)
 )engine=innodb default charset=utf8;
 
 create table apply(
@@ -27,7 +27,7 @@ create table apply(
 	apply_status tinyint default 0 comment "申请状态",
 	gmt_create timestamp default current_timestamp comment "创建时间",
 	gmt_update timestamp default current_timestamp comment "修改时间",
-	primary key id `id`
+	primary key id(`id`)
 )engine=innodb default charset=utf8;
 
 create table push_log(
@@ -35,5 +35,5 @@ create table push_log(
 	push_id int not null comment "推送ID",
 	apply_status tinyint default 0 comment "推送状态",
 	gmt_create timestamp default current_timestamp comment "创建时间",
-	primary key id `id`
+	primary key id(`id`)
 )engine=innodb default charset=utf8;
