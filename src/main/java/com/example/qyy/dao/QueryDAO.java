@@ -12,6 +12,7 @@ public class QueryDAO {
     private int id;
     private int timeout;
     private int resultType;
+    private String content;
     private Date gmtCreate;
     private Date gmtUpdate;
 
