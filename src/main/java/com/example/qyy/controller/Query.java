@@ -3,11 +3,14 @@ package com.example.qyy.controller;
 import com.example.qyy.dao.QueryDAO;
 import com.example.qyy.dto.ResultDTO;
 import com.example.qyy.mapper.QueryMapper;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("query")
@@ -28,7 +31,12 @@ public class Query {
     }
 
     @RequestMapping(value = "insert", method = RequestMethod.POST)
-    public ResultDTO insert(QueryDAO queryDAO) {
+    public ResultDTO insert(@Valid QueryDAO queryDAO, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()){
+            resultDTO.setErrorCode(1);
+            resultDTO.setMessage(bindingResult.getFieldError().getDefaultMessage());
+            return resultDTO;
+        }
         int insertedId = queryMapper.insert(queryDAO);
         if (insertedId > 0) {
             resultDTO.setErrorCode(0);
